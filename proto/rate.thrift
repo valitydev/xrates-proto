@@ -11,6 +11,8 @@ typedef string CurrencySymbolicCode
 
 typedef string SourceID
 
+typedef i64 SequenceID
+
 struct EventRange {
     1: optional EventID after
     2: required i32 limit
@@ -69,6 +71,7 @@ struct SinkEvent {
     2: required base.Timestamp created_at
     3: required SourceID       source
     4: required Event          payload
+    5: required SequenceID     sequence_id
 }
 
 service EventSink {
