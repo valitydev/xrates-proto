@@ -2,6 +2,7 @@ namespace java com.rbkmoney.xrates.rate
 namespace erlang rate
 
 include "base.thrift"
+include "domain.thrift"
 
 typedef i64 EventID
 typedef base.Rational ExchangeRate
@@ -48,6 +49,7 @@ struct ExchangeRateData {
 * source - валюта, из которой конвертируют
 * destination - валюта, в которую конвертируют
 * exchange_rate - рациональное число конверсии в учете минорных единиц
+* payment_system - платежная система, в рамках которой установлен курс
 *
 * Пример:
 * Предположим, что мы конвертируем CLF в RUB по курсу 2640.4546 рублей.
@@ -60,6 +62,7 @@ struct Quote {
     1: required Currency source
     2: required Currency destination
     3: required ExchangeRate exchange_rate
+    4: optional domain.BankCardPaymentSystem payment_system
 }
 
 struct Event {
