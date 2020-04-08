@@ -2,7 +2,6 @@ namespace java com.rbkmoney.xrates.rate
 namespace erlang rate
 
 include "base.thrift"
-include "domain.thrift"
 
 typedef i64 EventID
 typedef base.Rational ExchangeRate
@@ -49,7 +48,6 @@ struct ExchangeRateData {
 * source - валюта, из которой конвертируют
 * destination - валюта, в которую конвертируют
 * exchange_rate - рациональное число конверсии в учете минорных единиц
-* payment_system - платежная система, в рамках которой установлен курс
 *
 * Пример:
 * Предположим, что мы конвертируем CLF в RUB по курсу 2640.4546 рублей.
@@ -62,7 +60,6 @@ struct Quote {
     1: required Currency source
     2: required Currency destination
     3: required ExchangeRate exchange_rate
-    4: optional domain.BankCardPaymentSystem payment_system
 }
 
 struct Event {
@@ -75,6 +72,33 @@ struct SinkEvent {
     3: required SourceID       source
     4: required Event          payload
     5: required SequenceID     sequence_id
+}
+
+/**
+* Запрос на конвертацию, где:
+* source - валюта, из которой конвертируют
+* destination - валюта, в которую конвертируют
+* amount - сумма в валюте source в минорных денежных единицах
+* datetime - дата и время, за которое нужно провести конвертацию
+*/
+struct ConversionRequest {
+    1: required CurrencySymbolicCode source
+    2: required CurrencySymbolicCode destination
+    3: required base.Amount amount
+    4: optional base.Timestamp datetime
+}
+
+exception CurrencyNotFound {}
+exception QuoteNotFound {}
+
+service Rates {
+
+    ExchangeRateData GetExchangeRates(1: SourceID source, 2: base.Timestamp datetime)
+        throws (QuoteNotFound ex1)
+
+    base.Rational GetConvertedAmount(SourceID source, ConversionRequest request)
+        throws (QuoteNotFound ex1, CurrencyNotFound ex2)
+
 }
 
 service EventSink {
