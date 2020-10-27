@@ -7,10 +7,9 @@
     <parent>
         <groupId>com.rbkmoney</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.5</version>
     </parent>
 
-    <groupId>com.rbkmoney</groupId>
     <artifactId>xrates-proto</artifactId>
     <version>1.2-16d00d4</version>
     <packaging>jar</packaging>
@@ -26,7 +25,7 @@
         <dependency>
             <groupId>com.rbkmoney.woody</groupId>
             <artifactId>woody-thrift</artifactId>
-            <version>LATEST</version>
+            <version>[1.1.22,)</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -38,7 +37,7 @@
             <plugin>
                 <groupId>org.apache.thrift</groupId>
                 <artifactId>thrift-maven-plugin</artifactId>
-                <version>0.9.3-1</version>
+                <version>0.10.0</version>
                 <configuration>
                     <generator>java:fullcamel</generator>
                     <thriftSourceRoot>${project.basedir}/proto</thriftSourceRoot>
