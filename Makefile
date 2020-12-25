@@ -7,7 +7,7 @@ UTILS_PATH := build_utils
 TEMPLATES_PATH := .
 
 # Name of the service
-SERVICE_NAME := binbase-proto
+SERVICE_NAME := xrates-proto
 
 # Build image tag to be used
 BUILD_IMAGE_TAG := b04c5291d101132e53e578d96e1628d2e6dab0c0
