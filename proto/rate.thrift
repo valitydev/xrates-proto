@@ -94,10 +94,13 @@ exception QuoteNotFound {}
 service Rates {
 
     ExchangeRateData GetExchangeRates(1: SourceID source, 2: base.Timestamp datetime)
-        throws (QuoteNotFound ex1)
+        throws (1: QuoteNotFound ex1)
 
-    base.Rational GetConvertedAmount(SourceID source, ConversionRequest request)
-        throws (QuoteNotFound ex1, CurrencyNotFound ex2)
+    base.Rational GetConvertedAmount(1: SourceID source, 2: ConversionRequest request)
+        throws (
+            1: QuoteNotFound ex1
+            2: CurrencyNotFound ex2
+        )
 
 }
 
