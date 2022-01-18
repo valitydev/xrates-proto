@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.xrates.rate
+namespace java dev.vality.xrates.rate
 namespace erlang rate
 
 include "base.thrift"
