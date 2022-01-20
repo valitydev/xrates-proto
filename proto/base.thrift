@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.xrates.base
+namespace java dev.vality.xrates.base
 namespace erlang base
 
 /**
