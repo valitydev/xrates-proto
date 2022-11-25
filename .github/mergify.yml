@@ -1,0 +1,23 @@
+pull_request_rules:
+  - name: automatic merge for Renovate pull requests
+    conditions:
+      - "author=renovate[bot]"
+      - "check-success=java-build / build"
+      - "check-success=erlang-build / Build"
+      - or:
+          - "check-success=frontend-build"
+          - "check-skipped=frontend-build"
+    actions:
+      merge:
+        method: squash
+  - name: automatic merge for valitydev bot pull requests
+    conditions:
+      - "author=valitydev-bot"
+      - "check-success=java-build / build"
+      - "check-success=erlang-build / Build"
+      - or:
+          - "check-success=frontend-build"
+          - "check-skipped=frontend-build"
+    actions:
+      merge:
+        method: squash
