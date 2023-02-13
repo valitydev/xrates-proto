@@ -1,4 +1,4 @@
-name: "Java: Deploy"
+name: Java deploy
 
 on:
   push:

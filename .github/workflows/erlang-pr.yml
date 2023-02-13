@@ -1,4 +1,4 @@
-name: "Erlang: PR"
+name: Erlang build
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - "*"
 
 jobs:
-  erlang-build:
+  build:
     uses: valitydev/erlang-workflows/.github/workflows/erlang-simple-build.yml@v1
     with:
       otp-version: 24
