@@ -1,10 +1,8 @@
-name: "Frontend: Publish"
+name: 'Frontend: Publish'
 
 on:
   push:
-    branches:
-      - "master"
-      - "main"
+    branches: ['master', 'main']
 
 jobs:
   configured:
@@ -13,7 +11,7 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     needs: configured
-    if: needs.configured.outputs.exists
+    if: needs.configured.outputs.exists == 'true'
     steps:
       - uses: actions/checkout@v3
       - uses: valitydev/action-frontend/setup@v0.1
