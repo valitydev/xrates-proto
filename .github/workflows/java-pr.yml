@@ -7,4 +7,4 @@ on:
 
 jobs:
   java-build:
-    uses: valitydev/java-workflow/.github/workflows/maven-thrift-build.yml@v2
+    uses: valitydev/java-workflow/.github/workflows/maven-thrift-build.yml@v3
